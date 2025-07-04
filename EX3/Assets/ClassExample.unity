@@ -135,6 +135,7 @@ GameObject:
   - component: {fileID: 51164692}
   - component: {fileID: 51164691}
   - component: {fileID: 51164690}
+  - component: {fileID: 51164694}
   m_Layer: 0
   m_Name: WayPointD
   m_TagString: Untagged
@@ -186,7 +187,7 @@ BoxCollider2D:
   m_AutoTiling: 0
   serializedVersion: 2
   m_Size: {x: 5.12, y: 5.12}
-  m_EdgeRadius: 0
+  m_EdgeRadius: 15
 --- !u!114 &51164691
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -266,6 +267,33 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!50 &51164694
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 51164689}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &84483036
 GameObject:
   m_ObjectHideFlags: 0
@@ -278,6 +306,7 @@ GameObject:
   - component: {fileID: 84483039}
   - component: {fileID: 84483038}
   - component: {fileID: 84483037}
+  - component: {fileID: 84483041}
   m_Layer: 0
   m_Name: WayPointE
   m_TagString: Untagged
@@ -329,7 +358,7 @@ BoxCollider2D:
   m_AutoTiling: 0
   serializedVersion: 2
   m_Size: {x: 5.12, y: 5.12}
-  m_EdgeRadius: 0
+  m_EdgeRadius: 15
 --- !u!114 &84483038
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -409,6 +438,33 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!50 &84483041
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 84483036}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &358654684
 GameObject:
   m_ObjectHideFlags: 0
@@ -817,6 +873,7 @@ GameObject:
   - component: {fileID: 1018447978}
   - component: {fileID: 1018447977}
   - component: {fileID: 1018447976}
+  - component: {fileID: 1018447980}
   m_Layer: 0
   m_Name: WayPointF
   m_TagString: Untagged
@@ -868,7 +925,7 @@ BoxCollider2D:
   m_AutoTiling: 0
   serializedVersion: 2
   m_Size: {x: 5.12, y: 5.12}
-  m_EdgeRadius: 0
+  m_EdgeRadius: 15
 --- !u!114 &1018447977
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -948,6 +1005,33 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!50 &1018447980
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1018447975}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &1032139599
 GameObject:
   m_ObjectHideFlags: 0
@@ -1265,6 +1349,7 @@ GameObject:
   - component: {fileID: 1724540254}
   - component: {fileID: 1724540253}
   - component: {fileID: 1724540252}
+  - component: {fileID: 1724540256}
   m_Layer: 0
   m_Name: WayPointC
   m_TagString: Untagged
@@ -1316,7 +1401,7 @@ BoxCollider2D:
   m_AutoTiling: 0
   serializedVersion: 2
   m_Size: {x: 5.12, y: 5.12}
-  m_EdgeRadius: 0
+  m_EdgeRadius: 15
 --- !u!114 &1724540253
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1396,6 +1481,33 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!50 &1724540256
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1724540251}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &1750850344
 GameObject:
   m_ObjectHideFlags: 0
@@ -1408,6 +1520,7 @@ GameObject:
   - component: {fileID: 1750850346}
   - component: {fileID: 1750850345}
   - component: {fileID: 1750850348}
+  - component: {fileID: 1750850349}
   m_Layer: 0
   m_Name: WayPointA
   m_TagString: Untagged
@@ -1538,7 +1651,34 @@ BoxCollider2D:
   m_AutoTiling: 0
   serializedVersion: 2
   m_Size: {x: 5.12, y: 5.12}
-  m_EdgeRadius: 0
+  m_EdgeRadius: 15
+--- !u!50 &1750850349
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1750850344}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &2024009365
 GameObject:
   m_ObjectHideFlags: 0
@@ -1551,6 +1691,7 @@ GameObject:
   - component: {fileID: 2024009368}
   - component: {fileID: 2024009367}
   - component: {fileID: 2024009366}
+  - component: {fileID: 2024009370}
   m_Layer: 0
   m_Name: WayPointB
   m_TagString: Untagged
@@ -1602,7 +1743,7 @@ BoxCollider2D:
   m_AutoTiling: 0
   serializedVersion: 2
   m_Size: {x: 5.12, y: 5.12}
-  m_EdgeRadius: 0
+  m_EdgeRadius: 15
 --- !u!114 &2024009367
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1682,6 +1823,33 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!50 &2024009370
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2024009365}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

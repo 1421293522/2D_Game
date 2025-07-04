@@ -1,7 +1,9 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.UIElements;
 
-public partial class EnemyBehavior : MonoBehaviour {
+public partial class EnemyBehavior : MonoBehaviour
+{
 
     // All instances of Enemy shares this one WayPoint and EnemySystem
     static private EnemySpawnSystem sEnemySystem = null;
@@ -18,15 +20,18 @@ public partial class EnemyBehavior : MonoBehaviour {
     private enum Mode { Sequential, Random };
     private Mode movementMode = Mode.Sequential;
     private int speed = 20;
+    private const float kEnemyRotateSpeed = 90f / 2f;
+    private const float kEnemySpeed = 20f;
+    Vector3 direction;
+
+    private float mEnemySpeed = kEnemySpeed;
 
     private void Awake()
     {
-
     }
 
     void Start()
     {
-
     }
 
     void Update()
@@ -40,19 +45,31 @@ public partial class EnemyBehavior : MonoBehaviour {
 
         // Get target waypoint position
         Vector3 targetPosition = GetWayPointPosition(nextPoint);
-        
+
         // Calculate direction to target
-        Vector3 direction = (targetPosition - transform.position).normalized;
-        
-        // Move towards target at constant speed
-        transform.position += direction * speed * Time.deltaTime;
-        
-        // Check if we're close enough to the target waypoint to get next one
-        float distanceToTarget = Vector3.Distance(transform.position, targetPosition);
-        if (distanceToTarget <= 25f) // Within 25 units
+        direction = (targetPosition - transform.position).normalized;
+
+        // Rotate towards movement direction (around Z-axis for 2D)
+        if (direction != Vector3.zero)
         {
-            nextPoint = NextPoint(nextPoint);
+            // Calculate the angle between current forward and target direction
+            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+
+            // Get current rotation
+            Quaternion targetRotation = Quaternion.Euler(0, 0, angle - 90); // Subtract 90 if your sprite faces up by default
+
+            // Smoothly rotate towards target direction
+            transform.rotation = Quaternion.RotateTowards(
+                transform.rotation,
+                targetRotation,
+                kEnemyRotateSpeed * Time.deltaTime);
         }
+        else
+        {
+            mEnemySpeed = kEnemySpeed;
+        }
+
+        transform.position += transform.up * mEnemySpeed * Time.deltaTime;
     }
 
     // compute next waypoint
@@ -89,12 +106,12 @@ public partial class EnemyBehavior : MonoBehaviour {
         // Find waypoint GameObject by name
         string wayPointName = "WayPoint" + point.ToString();
         GameObject wayPointObj = GameObject.Find(wayPointName);
-        
+
         if (wayPointObj != null)
         {
             return wayPointObj.transform.position;
         }
-        
+
         // Fallback positions if GameObjects not found
         switch (point)
         {
@@ -107,6 +124,13 @@ public partial class EnemyBehavior : MonoBehaviour {
             case Point.G: return new Vector3(0, 0, 0);
             default: return Vector3.zero;
         }
+    }
+
+    private bool AreVector3Equal(Vector3 a, Vector3 b, float tolerance = 1f)
+    {
+        return Mathf.Abs(a.x - b.x) <= tolerance &&
+               Mathf.Abs(a.y - b.y) <= tolerance;
+
     }
 
     #region Trigger into chase or die
@@ -122,7 +146,8 @@ public partial class EnemyBehavior : MonoBehaviour {
         {
             ThisEnemyIsHit();
 
-        } else if (g.name == "Egg(Clone)")
+        }
+        else if (g.name == "Egg(Clone)")
         {
             mNumHit++;
             if (mNumHit < kHitsToDestroy)
@@ -130,13 +155,26 @@ public partial class EnemyBehavior : MonoBehaviour {
                 Color c = GetComponent<Renderer>().material.color;
                 c.a = c.a * kEnemyEnergyLost;
                 GetComponent<Renderer>().material.color = c;
-            } else
+            }
+            else
             {
                 ThisEnemyIsHit();
             }
         }
+        else if (g.name == "WayPoint" + nextPoint)
+        {
+            mEnemySpeed = 10f;
+            nextPoint = NextPoint(nextPoint);
+        }
+        else { mEnemySpeed = kEnemySpeed; }
     }
-
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.name.StartsWith("WayPoint"))
+        {
+            mEnemySpeed = kEnemySpeed;
+        }
+    }
     private void ThisEnemyIsHit()
     {
         sEnemySystem.OneEnemyDestroyed();
