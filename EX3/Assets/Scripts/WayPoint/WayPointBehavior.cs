@@ -11,14 +11,16 @@ public class WayPointBehavior : MonoBehaviour
     private const float kRespawnRange = 15f;
     private float mWayPointOpacityPercent = 1f;
     private Vector3 mInitPos = Vector3.zero;
+    private float mOpacity = 0f;
     private float mInitOpacity = 0f;
+    private bool mIsTransparent = false;
 
     // Start is called before the first frame update
     void Awake()
     {
         mInitPos = transform.localPosition;
         Color c = GetComponent<Renderer>().material.color;
-        mInitOpacity = c.a;
+        mOpacity = mInitOpacity = c.a;
     }
     void Start()
     {
@@ -28,6 +30,12 @@ public class WayPointBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.H))
+        {
+            mIsTransparent = !mIsTransparent;
+            UpdateOpacity();
+        }
+
 
     }
 
@@ -35,6 +43,20 @@ public class WayPointBehavior : MonoBehaviour
     {
         mNumHit = 0;
         mWayPointOpacityPercent = 1f;
+    }
+
+    private void UpdateOpacity()
+    {
+        Color c = GetComponent<Renderer>().material.color;
+        if (mIsTransparent)
+        {
+            c.a = 0;
+        }
+        else
+        {
+            c.a = mInitOpacity * mWayPointOpacityPercent;
+        }
+        GetComponent<Renderer>().material.color = c;
     }
 
     #region Trigger into chase or die
@@ -51,10 +73,8 @@ public class WayPointBehavior : MonoBehaviour
             mNumHit++;
             if (mNumHit < kHitsToDestroy)
             {
-                Color c = GetComponent<Renderer>().material.color;
                 mWayPointOpacityPercent -= kWayPointOpacityLost;
-                c.a = mInitOpacity * mWayPointOpacityPercent;
-                GetComponent<Renderer>().material.color = c;
+                UpdateOpacity();
             }
             else
             {
@@ -82,11 +102,8 @@ public class WayPointBehavior : MonoBehaviour
         pos.y = Random.Range(mInitPos.y - kRespawnRange, mInitPos.y + kRespawnRange);
         transform.localPosition = pos;
 
-        Color c = GetComponent<Renderer>().material.color;
-        c.a = mInitOpacity;
-        GetComponent<Renderer>().material.color = c;
-
         Init();
+        UpdateOpacity();
     }
     #endregion
 }
