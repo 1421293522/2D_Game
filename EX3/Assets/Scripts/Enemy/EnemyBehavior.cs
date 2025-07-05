@@ -21,6 +21,7 @@ public partial class EnemyBehavior : MonoBehaviour
     private Mode movementMode = Mode.Sequential;
     private const float kEnemyRotateSpeed = 90f / 2f;
     private const float kEnemySpeed = 20f;
+    private const float kTurnRate = 0.03f;
     Vector3 direction;
 
     private float mEnemySpeed = kEnemySpeed;
@@ -48,7 +49,7 @@ public partial class EnemyBehavior : MonoBehaviour
         // Calculate direction to target
         direction = (targetPosition - transform.position).normalized;
         direction.z = 0;
-
+        /* Original Rotation Logic
         // Rotate towards movement direction (around Z-axis for 2D)
         if (direction != Vector3.zero)
         {
@@ -61,7 +62,9 @@ public partial class EnemyBehavior : MonoBehaviour
 
             transform.rotation = Quaternion.Euler(0, 0, smoothedAngle);
         }
-
+        */
+        // New Rotation Logic
+        transform.up = Vector3.LerpUnclamped(transform.up, direction, kTurnRate);
         transform.position += transform.up * mEnemySpeed * Time.deltaTime;
         float distanceToTarget = Vector3.Distance(transform.position, targetPosition);
         if (distanceToTarget <= 25f) // Within 25 units
