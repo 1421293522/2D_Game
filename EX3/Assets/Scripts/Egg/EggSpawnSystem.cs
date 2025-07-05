@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class EggSpawnSystem 
 {
     private float kEggInterval = 0.2f;
-    private const float kCoolDownBarSize = 100f;
+    private const float kCoolDownBarSize = 200f;
 
     // Spawning support
     private GameObject mEggSample = null;
