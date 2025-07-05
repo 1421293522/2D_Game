@@ -1,4 +1,4 @@
-﻿using System.Collections;
+﻿﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -15,6 +15,9 @@ public class EggSpawnSystem
 
     // Count
     private int mEggCount = 0;
+
+    // Cool down bar support
+    private RectTransform mCoolDownBar = null;
 
     public EggSpawnSystem()
     {
@@ -52,4 +55,19 @@ public class EggSpawnSystem
     public void DecEggCount() { mEggCount--;  }
     public int GetEggCount() { return mEggCount; }
     public string EggSystemStatus() { return "  EGG: OnScreen(" + GetEggCount() + ") ";  }
+
+    // Cool down bar support
+    public void SetCoolDownBar(RectTransform bar) 
+    {
+        mCoolDownBar = bar;
+    }
+
+    public void UpdateCoolDownBar()
+    {
+        if (mCoolDownBar != null)
+        {
+            float percentage = Mathf.Clamp01(1f - (TimeTillNext() / kEggInterval));
+            mCoolDownBar.sizeDelta = new Vector2(percentage * kCoolDownBarSize, mCoolDownBar.sizeDelta.y);
+        }
+    }
 }

@@ -17,11 +17,16 @@ public class HeroBehavior : MonoBehaviour {
                                           ") TouchedEnemy(" + mHeroTouchedEnemy + ")   " 
                                             + mEggSystem.EggSystemStatus(); }
 
+    // Cool down bar UI
+    public RectTransform mCoolDownBarUI;
+
     private void Awake()
     {
         // Actually since Hero spwans eggs, this can be done in the Start() function, but, 
         // just to show this can also be done here.
         mEggSystem = new EggSpawnSystem();
+        if (mCoolDownBarUI != null)
+            mEggSystem.SetCoolDownBar(mCoolDownBarUI);
     }
 
     void Start ()
@@ -32,6 +37,7 @@ public class HeroBehavior : MonoBehaviour {
 	void Update () {
         UpdateMotion();
         ProcessEggSpwan();
+        mEggSystem.UpdateCoolDownBar();
     }
 
     private int EggsOnScreen() { return mEggSystem.GetEggCount();  }
