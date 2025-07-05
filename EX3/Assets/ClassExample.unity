@@ -187,7 +187,7 @@ BoxCollider2D:
   m_AutoTiling: 0
   serializedVersion: 2
   m_Size: {x: 5.12, y: 5.12}
-  m_EdgeRadius: 15
+  m_EdgeRadius: 0
 --- !u!114 &51164691
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -358,7 +358,7 @@ BoxCollider2D:
   m_AutoTiling: 0
   serializedVersion: 2
   m_Size: {x: 5.12, y: 5.12}
-  m_EdgeRadius: 15
+  m_EdgeRadius: 0
 --- !u!114 &84483038
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -925,7 +925,7 @@ BoxCollider2D:
   m_AutoTiling: 0
   serializedVersion: 2
   m_Size: {x: 5.12, y: 5.12}
-  m_EdgeRadius: 15
+  m_EdgeRadius: 0
 --- !u!114 &1018447977
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1401,7 +1401,7 @@ BoxCollider2D:
   m_AutoTiling: 0
   serializedVersion: 2
   m_Size: {x: 5.12, y: 5.12}
-  m_EdgeRadius: 15
+  m_EdgeRadius: 0
 --- !u!114 &1724540253
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1651,7 +1651,7 @@ BoxCollider2D:
   m_AutoTiling: 0
   serializedVersion: 2
   m_Size: {x: 5.12, y: 5.12}
-  m_EdgeRadius: 15
+  m_EdgeRadius: 0
 --- !u!50 &1750850349
 Rigidbody2D:
   serializedVersion: 4
@@ -1743,7 +1743,7 @@ BoxCollider2D:
   m_AutoTiling: 0
   serializedVersion: 2
   m_Size: {x: 5.12, y: 5.12}
-  m_EdgeRadius: 15
+  m_EdgeRadius: 0
 --- !u!114 &2024009367
 MonoBehaviour:
   m_ObjectHideFlags: 0

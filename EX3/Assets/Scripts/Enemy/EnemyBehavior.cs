@@ -19,7 +19,6 @@ public partial class EnemyBehavior : MonoBehaviour
 
     private enum Mode { Sequential, Random };
     private Mode movementMode = Mode.Sequential;
-    private int speed = 20;
     private const float kEnemyRotateSpeed = 90f / 2f;
     private const float kEnemySpeed = 20f;
     Vector3 direction;
@@ -48,28 +47,27 @@ public partial class EnemyBehavior : MonoBehaviour
 
         // Calculate direction to target
         direction = (targetPosition - transform.position).normalized;
+        direction.z = 0;
 
         // Rotate towards movement direction (around Z-axis for 2D)
         if (direction != Vector3.zero)
         {
-            // Calculate the angle between current forward and target direction
-            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+            // Calculate the target angle (adjust -90 if sprite faces up)
+            float targetAngle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90f;
 
-            // Get current rotation
-            Quaternion targetRotation = Quaternion.Euler(0, 0, angle - 90); // Subtract 90 if your sprite faces up by default
+            // Current angle
+            float currentAngle = transform.rotation.eulerAngles.z;
+            float smoothedAngle = Mathf.LerpAngle(currentAngle, targetAngle, 0.3f);
 
-            // Smoothly rotate towards target direction
-            transform.rotation = Quaternion.RotateTowards(
-                transform.rotation,
-                targetRotation,
-                kEnemyRotateSpeed * Time.deltaTime);
-        }
-        else
-        {
-            mEnemySpeed = kEnemySpeed;
+            transform.rotation = Quaternion.Euler(0, 0, smoothedAngle);
         }
 
         transform.position += transform.up * mEnemySpeed * Time.deltaTime;
+        float distanceToTarget = Vector3.Distance(transform.position, targetPosition);
+        if (distanceToTarget <= 25f) // Within 25 units
+        {
+            nextPoint = NextPoint(nextPoint);
+        }
     }
 
     // compute next waypoint
@@ -160,11 +158,6 @@ public partial class EnemyBehavior : MonoBehaviour
             {
                 ThisEnemyIsHit();
             }
-        }
-        else if (g.name == "WayPoint" + nextPoint)
-        {
-            mEnemySpeed = 10f;
-            nextPoint = NextPoint(nextPoint);
         }
         else { mEnemySpeed = kEnemySpeed; }
     }
