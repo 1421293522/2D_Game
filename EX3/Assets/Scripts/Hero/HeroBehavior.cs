@@ -10,11 +10,13 @@ public class HeroBehavior : MonoBehaviour {
     private float mHeroSpeed = kHeroSpeed;
     
     private bool mMouseDrive = true;
+
+    private bool mSequenceMode = true;
     //  Hero state
     private int mHeroTouchedEnemy = 0;
     private void TouchedEnemy() { mHeroTouchedEnemy++; }
-    public string GetHeroState() { return "HERO: Drive(" + (mMouseDrive?"Mouse":"Key") + 
-                                          ") TouchedEnemy(" + mHeroTouchedEnemy + ")   " 
+    public string GetHeroState() { return "WAYPOINTS: (" + (mSequenceMode? "Sequence" : "Random") + ")  HERO: Drive(" + (mMouseDrive?"Mouse":"Key") + 
+                                          ")  TouchedEnemy(" + mHeroTouchedEnemy + ")   "
                                             + mEggSystem.EggSystemStatus(); }
 
     // Cool down bar UI
@@ -47,6 +49,8 @@ public class HeroBehavior : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.M))
             mMouseDrive = !mMouseDrive;
             
+        if (Input.GetKeyDown(KeyCode.J))
+            mSequenceMode = !mSequenceMode;
         // Only support rotation
         transform.Rotate(Vector3.forward, -1f * Input.GetAxis("Horizontal") *
                                     (kHeroRotateSpeed * Time.smoothDeltaTime));
