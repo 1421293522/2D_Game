@@ -8,7 +8,7 @@ using UnityEngine.PlayerLoop;
 public class HeroBehavior : MonoBehaviour
 {
     public float mMoveSpeed = 10f;
-    private bool mIsTowardsRight;
+    private bool mIsTowardsRight = true;
     private bool mIsMove = false;
     private Animator mAnimator = null;
     private bool mIsShooting = false;
@@ -37,7 +37,7 @@ public class HeroBehavior : MonoBehaviour
         if (Input.GetKey(KeyCode.S)) vertical -= 1f;
         mIsShooting = Input.GetMouseButton(0);
 
-        mIsTowardsRight = horizontal >= 0 ? true : false;
+        mIsTowardsRight = horizontal > 0 ? true : (horizontal < 0 ? false : mIsTowardsRight);
 
         mIsMove = Move(horizontal, vertical);
 
@@ -48,7 +48,7 @@ public class HeroBehavior : MonoBehaviour
         {
             Shoot();
         }
-        mAnimator.SetBool("Shoot", mIsMove);
+        mAnimator.SetBool("Shoot", mIsShooting);
     }
 
     
@@ -71,9 +71,14 @@ public class HeroBehavior : MonoBehaviour
         if (Time.time - mShootTime < mShootSpeed)
             return false;
         // Respwan
+        Vector3 mouse = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        mouse.z = 0f;
+        Vector3 target = (mouse - transform.localPosition).normalized;
+
         mShootTime = Time.time;
         GameObject e = Instantiate(Resources.Load("Prefabs/Blue_Bullet") as GameObject);
         e.transform.localPosition = transform.position;
+        e.transform.right = target;
         return true;
     }
 
