@@ -1,7 +1,8 @@
 using TMPro;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour {
+public class GameManager : MonoBehaviour
+{
     public static GameManager sTheGlobalBehavior = null;
 
     public TMP_Text mGameStateEcho = null;  // Defined in UnityEngine.UI
@@ -22,7 +23,8 @@ public class GameManager : MonoBehaviour {
         mEnemySystem = new EnemySpawnSystem(b.min, b.max);
     }
 
-	void Update () {
+    void Update()
+    {
         EchoGameState(); // always do this
 
         if (Input.GetKey(KeyCode.Q))
@@ -36,6 +38,7 @@ public class GameManager : MonoBehaviour {
 
     private void EchoGameState()
     {
-        mGameStateEcho.text =  mHero.GetHeroState() + "  " + mEnemySystem.GetEnemyState();
+        mGameStateEcho.text = mHero.GetHeroState() + "  " + mEnemySystem.GetEnemyState();
     }
+    
 }

@@ -14,14 +14,14 @@ public partial class EnemyBehavior : MonoBehaviour
     private const float kEnemyEnergyLost = 0.8f;
 
     // Movement
-    private enum Point { A, B, C, D, E, F, G };
+    private enum Point { A, B, C, D, E, F };
     private Point nextPoint = Point.A;
 
     private enum Mode { Sequential, Random };
     private Mode movementMode = Mode.Sequential;
     private const float kEnemyRotateSpeed = 90f / 2f;
     private const float kEnemySpeed = 20f;
-    private const float kTurnRate = 0.03f;
+    private const float kTurnRate = 0.03f;  // 0.03/60 as specified in requirements
     Vector3 direction;
 
     private float mEnemySpeed = kEnemySpeed;
@@ -46,25 +46,8 @@ public partial class EnemyBehavior : MonoBehaviour
         // Get target waypoint position
         Vector3 targetPosition = GetWayPointPosition(nextPoint);
 
-        // Calculate direction to target
-        direction = (targetPosition - transform.position).normalized;
-        direction.z = 0;
-        /* Original Rotation Logic
-        // Rotate towards movement direction (around Z-axis for 2D)
-        if (direction != Vector3.zero)
-        {
-            // Calculate the target angle (adjust -90 if sprite faces up)
-            float targetAngle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90f;
-
-            // Current angle
-            float currentAngle = transform.rotation.eulerAngles.z;
-            float smoothedAngle = Mathf.LerpAngle(currentAngle, targetAngle, 0.3f);
-
-            transform.rotation = Quaternion.Euler(0, 0, smoothedAngle);
-        }
-        */
-        // New Rotation Logic
-        transform.up = Vector3.LerpUnclamped(transform.up, direction, kTurnRate);
+        // New Rotation Logic - Use PointAtPosition function as specified
+        PointAtPosition(targetPosition, kTurnRate);
         transform.position += transform.up * mEnemySpeed * Time.deltaTime;
         float distanceToTarget = Vector3.Distance(transform.position, targetPosition);
         if (distanceToTarget <= 25f) // Within 25 units
@@ -78,24 +61,16 @@ public partial class EnemyBehavior : MonoBehaviour
     {
         if (movementMode == Mode.Sequential)
         {
-            switch (currentPoint)
-            {
-                case Point.A: return Point.B;
-                case Point.B: return Point.C;
-                case Point.C: return Point.D;
-                case Point.D: return Point.E;
-                case Point.E: return Point.F;
-                case Point.F: return Point.G;
-                case Point.G: return Point.A;
-                default: return Point.A;
-            }
+            // Use modulus to cycle through enum values
+            int nextIndex = ((int)currentPoint + 1) % 6;
+            return (Point)nextIndex;
         }
         else // Random
         {
             Point next;
             do
             {
-                next = (Point)Random.Range(0, System.Enum.GetValues(typeof(Point)).Length);
+                next = (Point)Random.Range(0, 6);
             } while (next == currentPoint);
             return next;
         }
@@ -122,7 +97,6 @@ public partial class EnemyBehavior : MonoBehaviour
             case Point.D: return new Vector3(50, -50, 0);
             case Point.E: return new Vector3(0, -100, 0);
             case Point.F: return new Vector3(-50, -50, 0);
-            case Point.G: return new Vector3(0, 0, 0);
             default: return Vector3.zero;
         }
     }
@@ -131,7 +105,20 @@ public partial class EnemyBehavior : MonoBehaviour
     {
         return Mathf.Abs(a.x - b.x) <= tolerance &&
                Mathf.Abs(a.y - b.y) <= tolerance;
+    }
 
+    // Function to gradually point the enemy towards a target position
+    private void PointAtPosition(Vector3 targetPosition, float turnRate)
+    {
+        // Calculate direction to target
+        Vector3 direction = (targetPosition - transform.position).normalized;
+        direction.z = 0;
+        
+        // Gradually turn towards the target direction
+        if (direction != Vector3.zero)
+        {
+            transform.up = Vector3.LerpUnclamped(transform.up, direction, turnRate);
+        }
     }
 
     #region Trigger into chase or die
@@ -146,7 +133,6 @@ public partial class EnemyBehavior : MonoBehaviour
         if (g.name == "Hero")
         {
             ThisEnemyIsHit();
-
         }
         else if (g.name == "Egg(Clone)")
         {
