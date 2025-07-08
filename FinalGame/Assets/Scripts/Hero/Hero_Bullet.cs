@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Hero_Bullet : MonoBehaviour
 {
-    private float kMoveSpeed = 40f;
+    private float kMoveSpeed = 10f;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,7 +21,7 @@ public class Hero_Bullet : MonoBehaviour
     {
         // transfrom
         Vector3 pos = transform.localPosition;
-        pos += transform.right * kMoveSpeed * Time.smoothDeltaTime;
+        pos += transform.right * kMoveSpeed * Time.smoothDeltaTime * 30;
         transform.localPosition = pos;
     }
 
