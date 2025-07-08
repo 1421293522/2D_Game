@@ -38,7 +38,6 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1738,7 +1737,7 @@ GameObject:
   - component: {fileID: 788425177}
   - component: {fileID: 788425176}
   m_Layer: 0
-  m_Name: FogMap
+  m_Name: Fog
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

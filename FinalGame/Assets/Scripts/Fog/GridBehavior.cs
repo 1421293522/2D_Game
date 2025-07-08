@@ -23,14 +23,14 @@ public class GridBehavior : MonoBehaviour
         }
         else
         {
-            Debug.LogError("FogMap");
+            Debug.LogError("Fog");
         }
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E) && !isFading)
+        if (Input.GetKeyDown(KeyCode.R) && !isFading)
         {
             StartCoroutine(FadeOutFogMap());
         }
