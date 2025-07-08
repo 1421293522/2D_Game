@@ -4,16 +4,16 @@ using UnityEngine;
 public class EnemyBasic : MonoBehaviour
 {
     private Animator anim;
-    public GameObject bulletPrefab; // ×Óµ¯Ô¤ÖÆÌå
-    public Transform hero; // Ó¢ĞÛµÄTransform
+    public GameObject bulletPrefab; // å­å¼¹é¢„åˆ¶ä½“
+    public Transform hero; // è‹±é›„çš„Transform
     private float shootTimer = 0f;
-    private const float shootInterval = 1f; // Éä»÷¼ä¸ô1Ãë
+    private const float shootInterval = 1f; // å°„å‡»é—´éš”1ç§’
 
     void Start()
     {
         anim = GetComponent<Animator>();
 
-        // Èç¹ûheroÎ´Ö¸¶¨£¬³¢ÊÔ²éÕÒÓ¢ĞÛ¶ÔÏó
+        // å¦‚æœheroæœªæŒ‡å®šï¼Œå°è¯•æŸ¥æ‰¾è‹±é›„å¯¹è±¡
         if (hero == null)
         {
             GameObject heroObj = GameObject.FindGameObjectWithTag("Player");
@@ -26,22 +26,22 @@ public class EnemyBasic : MonoBehaviour
 
     void Update()
     {
-        // Ê¾Àı¿ØÖÆ´úÂë£¨Êµ¼ÊÓÎÏ·ÖĞÌæ»»ÎªÄãµÄAIÂß¼­£©
-        float speed = Input.GetKey(KeyCode.R) ? 1 : 0; // °´R¼ü²âÊÔ±¼ÅÜ
+        // ç¤ºä¾‹æ§åˆ¶ä»£ç ï¼ˆå®é™…æ¸¸æˆä¸­æ›¿æ¢ä¸ºä½ çš„AIé€»è¾‘ï¼‰
+        float speed = Input.GetKey(KeyCode.R) ? 1 : 0; // æŒ‰Ré”®æµ‹è¯•å¥”è·‘
         anim.SetFloat("Speed", speed);
 
-        if (Input.GetKeyDown(KeyCode.S)) // °´S¼ü²âÊÔÉä»÷
+        if (Input.GetKeyDown(KeyCode.S)) // æŒ‰Sé”®æµ‹è¯•å°„å‡»
         {
             anim.SetBool("IsAttacking", true);
-            Invoke("ResetAttack", 0.5f); // 0.5ÃëºóÖØÖÃ¹¥»÷×´Ì¬
+            Invoke("ResetAttack", 0.5f); // 0.5ç§’åé‡ç½®æ”»å‡»çŠ¶æ€
         }
 
-        if (Input.GetKeyDown(KeyCode.D)) // °´D¼ü²âÊÔËÀÍö
+        if (Input.GetKeyDown(KeyCode.D)) // æŒ‰Dé”®æµ‹è¯•æ­»äº¡
         {
             anim.SetTrigger("IsDead");
         }
 
-        // ×Ô¶¯Éä»÷Âß¼­
+        // è‡ªåŠ¨å°„å‡»é€»è¾‘
         shootTimer += Time.deltaTime;
         if (shootTimer >= shootInterval)
         {
@@ -54,18 +54,18 @@ public class EnemyBasic : MonoBehaviour
     {
         if (bulletPrefab == null)
         {
-            Debug.LogWarning("×Óµ¯Ô¤ÖÆÌåÎ´ÉèÖÃ£¡");
+            Debug.LogWarning("å­å¼¹é¢„åˆ¶ä½“æœªè®¾ç½®ï¼");
             return;
         }
 
-        // ´¥·¢¹¥»÷¶¯»­
+        // è§¦å‘æ”»å‡»åŠ¨ç”»
         anim.SetBool("IsAttacking", true);
-        Invoke("ResetAttack", 0.5f); // 0.5ÃëºóÖØÖÃ¹¥»÷×´Ì¬
+        Invoke("ResetAttack", 0.5f); // 0.5ç§’åé‡ç½®æ”»å‡»çŠ¶æ€
 
-        // ´ÓµĞÈËÖĞĞÄÎ»ÖÃ´´½¨×Óµ¯
+        // ä»æ•Œäººä¸­å¿ƒä½ç½®åˆ›å»ºå­å¼¹
         GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
 
-        // Èç¹ûÓĞÓ¢ĞÛ¶ÔÏó£¬ÈÃ×Óµ¯³¯ÏòÓ¢ĞÛ
+        // å¦‚æœæœ‰è‹±é›„å¯¹è±¡ï¼Œè®©å­å¼¹æœå‘è‹±é›„
         if (hero != null)
         {
             Vector3 direction = (hero.position - transform.position).normalized;

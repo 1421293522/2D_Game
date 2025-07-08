@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1859705199154366084}
   - component: {fileID: 2514987648141378987}
-  - component: {fileID: 349211644044853018}
+  - component: {fileID: 3886188088720604523}
   m_Layer: 0
-  m_Name: Enemy1_Bullet
+  m_Name: GreenLaserBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -85,7 +85,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &349211644044853018
+--- !u!114 &3886188088720604523
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -94,6 +94,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 4396420867434883223}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4116b95e8ab8b6d49827f5be2118d054, type: 3}
+  m_Script: {fileID: 11500000, guid: fce75ed5e2fd56a4c848778601373596, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mMoveSpeed: 50
+  mFlyingDuration: 5
+  mHitDuration: 0.2

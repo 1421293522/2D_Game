@@ -11,11 +11,11 @@ GameObject:
   - component: {fileID: 192600194880748067}
   - component: {fileID: 2237918859216792318}
   - component: {fileID: 1119590108476702261}
-  - component: {fileID: 9175371461109724917}
+  - component: {fileID: 7347705675031102307}
   - component: {fileID: -2769848252056169975}
   - component: {fileID: 3623447728286331208}
   m_Layer: 0
-  m_Name: Blue_Bullet
+  m_Name: BlueLaserBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -109,7 +109,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &9175371461109724917
+--- !u!114 &7347705675031102307
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -118,9 +118,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 308919726504299372}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a2582e0ab84549249b90f265b4ea1c37, type: 3}
+  m_Script: {fileID: 11500000, guid: fce75ed5e2fd56a4c848778601373596, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mMoveSpeed: 50
+  mFlyingDuration: 5
+  mHitDuration: 0.2
 --- !u!61 &-2769848252056169975
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -150,7 +153,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: -0.0125}
