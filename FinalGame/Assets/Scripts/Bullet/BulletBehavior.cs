@@ -62,5 +62,5 @@ public class BulletBehavior : MonoBehaviour
     {
         Destroy(transform.gameObject);
     }
-
+    
 }
