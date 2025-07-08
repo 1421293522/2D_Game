@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LaserBullet : BulletBehavior
+public class LaserBullet2 : BulletBehavior
 {
     private Animator mAnimator = null;
     void Awake()
@@ -47,7 +47,7 @@ public class LaserBullet : BulletBehavior
     void OnTriggerEnter2D(Collider2D collision)
     {
         GameObject e = collision.gameObject;
-        if (e.name == "Enemy1")
+        if (e.name == "Hero")
         {
             Debug.Log("Trigger");
             if (mBulletStatus != BulletStatus.Crash)

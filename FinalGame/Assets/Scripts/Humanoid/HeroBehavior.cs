@@ -11,6 +11,7 @@ public class HeroBehavior : HumanoidBehavior
     private bool mIsTowardsRight = true;
     private Animator mAnimator = null;
     private bool mIsShooting = false;
+    private bool isSlowing = false;
 
 
     // Start is called before the first frame update
@@ -35,6 +36,20 @@ public class HeroBehavior : HumanoidBehavior
         if (Input.GetKey(KeyCode.S)) vertical -= 1f;
         mIsShooting = Input.GetMouseButton(0);
 
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            isSlowing = !isSlowing;
+        }
+
+        if (isSlowing)
+        {
+            Time.timeScale = 0.05f;
+        }
+        else
+        {
+            Time.timeScale = 1f;
+        }
+
 
         Vector3 mov = new Vector3(horizontal, vertical, 0).normalized;
         if (mov != Vector3.zero)
@@ -54,7 +69,7 @@ public class HeroBehavior : HumanoidBehavior
         }
         else
             mIsTowardsRight = horizontal > 0 || (horizontal >= 0 && mIsTowardsRight);
-            
+
 
         gameObject.GetComponent<SpriteRenderer>().flipX = !mIsTowardsRight;
 
@@ -68,7 +83,8 @@ public class HeroBehavior : HumanoidBehavior
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        
+        GetHurt(10);
     }
+    
 
 }

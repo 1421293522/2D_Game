@@ -7,7 +7,7 @@ public class EnemyBasic : MonoBehaviour
     public GameObject bulletPrefab; // 子弹预制体
     public Transform hero; // 英雄的Transform
     private float shootTimer = 0f;
-    private const float shootInterval = 1f; // 射击间隔1秒
+    private const float shootInterval = 0.2f; // 射击间隔1秒
 
     void Start()
     {

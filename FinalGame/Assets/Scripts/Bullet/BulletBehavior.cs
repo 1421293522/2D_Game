@@ -15,8 +15,8 @@ public class BulletBehavior : MonoBehaviour
 
     // information about Bullet should include its speed
     public float mMoveSpeed = 50f;
-    public float mFlyingDuration = 5f;
-    public float mHitDuration = 0.2f;
+    public float mFlyingDuration = 3f;
+    public float mHitDuration = 1f;
     protected BulletStatus mBulletStatus = BulletStatus.Flying;
     protected float mStatusTime = 0f;
 
@@ -49,6 +49,7 @@ public class BulletBehavior : MonoBehaviour
     // Hit something, the wall or humanoid
     public bool Hit()
     {
+        Debug.Log("Hit");
         if (Time.time - mStatusTime < mHitDuration)
         {
             return true;

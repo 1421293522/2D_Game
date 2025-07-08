@@ -185,7 +185,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 100
+  orthographic size: 30
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -237,6 +237,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -1326031621549368289, guid: fb1a7dd558a09504b9b487238399eef5, type: 3}
+      propertyPath: m_Size.x
+      value: 0.44
+      objectReference: {fileID: 0}
+    - target: {fileID: -1326031621549368289, guid: fb1a7dd558a09504b9b487238399eef5, type: 3}
+      propertyPath: m_Size.y
+      value: 0.56
+      objectReference: {fileID: 0}
+    - target: {fileID: -1326031621549368289, guid: fb1a7dd558a09504b9b487238399eef5, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.027
+      objectReference: {fileID: 0}
+    - target: {fileID: -1326031621549368289, guid: fb1a7dd558a09504b9b487238399eef5, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.155
+      objectReference: {fileID: 0}
     - target: {fileID: 4729700831421871409, guid: fb1a7dd558a09504b9b487238399eef5, type: 3}
       propertyPath: m_Name
       value: Enemy1
