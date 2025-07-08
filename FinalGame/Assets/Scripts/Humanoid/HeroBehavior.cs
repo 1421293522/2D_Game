@@ -9,7 +9,6 @@ using UnityEngine.PlayerLoop;
 public class HeroBehavior : HumanoidBehavior
 {
     private bool mIsTowardsRight = true;
-    private bool mIsMove = false;
     private Animator mAnimator = null;
     private bool mIsShooting = false;
 
@@ -36,12 +35,27 @@ public class HeroBehavior : HumanoidBehavior
         if (Input.GetKey(KeyCode.S)) vertical -= 1f;
         mIsShooting = Input.GetMouseButton(0);
 
-        mIsTowardsRight = horizontal > 0 || (horizontal >= 0 && mIsTowardsRight);
 
-        
-        Move(new Vector3(horizontal, vertical));
+        Vector3 mov = new Vector3(horizontal, vertical, 0).normalized;
+        if (mov != Vector3.zero)
+        {
+            mAnimator.SetFloat("MoveSpeed", 1, 0.1f, Time.smoothDeltaTime);
+            Move(new Vector3(horizontal, vertical));
+        }
+        else
+        {
+            mAnimator.SetFloat("MoveSpeed", 0, 0.1f, Time.smoothDeltaTime);
+        }
 
-        mAnimator.SetBool("Move", mIsMove);
+        if (mIsShooting)
+        {
+            float mouseHorizontal = (Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.localPosition).x;
+            mIsTowardsRight = mouseHorizontal > 0 || (mouseHorizontal >= 0 && mIsTowardsRight);
+        }
+        else
+            mIsTowardsRight = horizontal > 0 || (horizontal >= 0 && mIsTowardsRight);
+            
+
         gameObject.GetComponent<SpriteRenderer>().flipX = !mIsTowardsRight;
 
         if (mIsShooting)

@@ -41,6 +41,7 @@ public class HumanoidBehavior : MonoBehaviour
         direction.z = 0;
         if (Time.time - mShootTime > mShootRate)
         {
+            mShootTime = Time.time;
             GameObject e = Instantiate(mBullet);
             e.transform.position = transform.position;
             e.transform.right = direction;
