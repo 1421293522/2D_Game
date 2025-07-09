@@ -33,7 +33,7 @@ public class HumanoidBehavior : MonoBehaviour
 
     void Start()
     {
-        
+        Init();
     }
 
     void Update()
@@ -41,24 +41,24 @@ public class HumanoidBehavior : MonoBehaviour
 
     }
 
-    protected void Init()
+    virtual protected void Init()
     {
         mRigidBody = GetComponent<Rigidbody2D>();
         mAnimator = GetComponent<Animator>();
         mRigidBody.freezeRotation = true;
     }
     
-    public void Idle()
+    virtual public void Idle()
     {
-        
+
     }
 
-    public void Move()
+    virtual public void Move()
     {
-        mRigidBody.AddForce(3 * mDirection);
+        mRigidBody.AddForce(50 * mDirection);
     }
 
-    public void Shoot()
+    virtual public void Shoot()
     {
         Instantiate(mBullet);
         mBullet.transform.localPosition = transform.localPosition;

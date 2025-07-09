@@ -5,9 +5,10 @@ using UnityEngine;
 
 public class HumanoidStatus : MonoBehaviour
 {
+    protected Animator mAnimator = null;
     public int mHealthPoint = 100;
 
-    public void GetHurt(int damage)
+    virtual public void GetHurt(int damage)
     {
         if (mHealthPoint - damage < 0)
         {
@@ -19,7 +20,7 @@ public class HumanoidStatus : MonoBehaviour
         }
     }
 
-    public void Die()
+    virtual public void Die()
     {
         if (mHealthPoint == 0)
         {
