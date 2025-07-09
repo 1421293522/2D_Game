@@ -43,7 +43,7 @@ public class HeroBehavior : HumanoidBehavior
         mRigidBody.AddForce(10 * mDirection, ForceMode2D.Impulse);
     }
 
-    public new void Shoot()
+    public override void Shoot()
     {
         if (Time.time - mShootTimer > mShootRate)
         {
