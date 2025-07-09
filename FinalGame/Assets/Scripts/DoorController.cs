@@ -23,6 +23,8 @@ public class DoorController : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private bool isOpen = false;
     private bool isInRange = false;
+
+    public bool IsOpen { get { return isOpen; } }
     
     void Awake()
     {
@@ -38,7 +40,7 @@ public class DoorController : MonoBehaviour
     
     void Update()
     {
-        if(isInRange && Input.GetKeyDown(KeyCode.E) && !isOpen)
+        if(isInRange && Input.GetKeyDown(KeyCode.U) && !isOpen)
         {
             StartCoroutine(OpenDoorSequence());
         }
