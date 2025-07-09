@@ -38,7 +38,7 @@ public class DoorController : MonoBehaviour
     
     void Update()
     {
-        if(isInRange && Input.GetKeyDown(KeyCode.E) && !isOpen)
+        if(isInRange && Input.GetKeyDown(KeyCode.U) && !isOpen)
         {
             StartCoroutine(OpenDoorSequence());
         }

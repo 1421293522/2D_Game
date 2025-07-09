@@ -12,6 +12,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Menu.unity
     guid: eb93ff9c483a9814f91dbc1277cd4635
   - enabled: 1
-    path: Assets/Scenes/Demo.unity
-    guid: d3ced7800a15d3c45b04b0a346a24f57
+    path: Assets/Scenes/HalfWall.unity
+    guid: dd5d2ce2b61090e49917b06ee98dffd7
   m_configObjects: {}
