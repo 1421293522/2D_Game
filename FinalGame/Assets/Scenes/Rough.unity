@@ -3323,7 +3323,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28b2eea73f1c5634bb29c20db9689978, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mFocus: {fileID: 888255766}
+  mFocus: {fileID: 1916864795}
 --- !u!1 &876745755
 GameObject:
   m_ObjectHideFlags: 0
@@ -4503,7 +4503,7 @@ TilemapRenderer:
   m_MaxChunkCount: 16
   m_MaxFrameAge: 16
   m_SortOrder: 0
-  m_Mode: 0
+  m_Mode: 1
   m_DetectChunkCullingBounds: 0
   m_MaskInteraction: 0
 --- !u!1839735485 &1130395846
@@ -7372,6 +7372,7 @@ GameObject:
   - component: {fileID: 2145521401}
   - component: {fileID: 2145521403}
   - component: {fileID: 2145521402}
+  - component: {fileID: 2145521404}
   m_Layer: 0
   m_Name: WallAbove
   m_TagString: Untagged

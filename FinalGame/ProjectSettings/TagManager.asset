@@ -5,6 +5,12 @@ TagManager:
   serializedVersion: 2
   tags:
   - Bullet
+  - BloodPackage
+  - Enemy
+  - PlayerBullet
+  - EnemyBullet
+  - Bullet
+  - Wall
   layers:
   - Default
   - TransparentFX
@@ -36,8 +42,8 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
+  - Projectile
+  - Humanoid
   m_SortingLayers:
   - name: Default
     uniqueID: 0

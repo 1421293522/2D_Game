@@ -1,20 +1,39 @@
 using System;
 using UnityEngine;
 
-
+[RequireComponent(typeof(Collider2D))]
+[RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(Animator))]
 // Humanoid Common Behavior
 // 5 Behavior: Idle, Move, Shoot, Gethurt, Death
 public class HumanoidBehavior : MonoBehaviour
 {
+    protected Rigidbody2D mRigidBody = null;
+    protected Animator mAnimator = null;
+
+    // used by Move, include speed & direction
+    public float mSpeed;
+    protected Vector3 mDirection;
+    public Vector3 mMoveDirection
+    {
+        set { mDirection = value.normalized; }
+    }
+
+    // used by others
+    protected Vector3 mTowards;
+    public Vector3 mFacingDirection
+    {
+        set { mTowards = value.normalized; }
+    }
+
+    // used by Shoot
     public GameObject mBullet = null;
-    public int mHealthPoint = 100;
-    public float mMoveSpeed = 30f;
     public float mShootRate = 0.1f;
-    private float mShootTime = 0f;
-    private int hit = 1;
+    protected float mShootTimer = 0f;
+
     void Start()
     {
-
+        Init();
     }
 
     void Update()
@@ -22,57 +41,29 @@ public class HumanoidBehavior : MonoBehaviour
 
     }
 
-    public void Idle()
+    virtual protected void Init()
     {
-        // do nothing
-        return;
+        mRigidBody = GetComponent<Rigidbody2D>();
+        mAnimator = GetComponent<Animator>();
+        mRigidBody.freezeRotation = true;
+    }
+    
+    virtual public void Idle()
+    {
+
     }
 
-    // direction don't need to be normalized
-    public void Move(Vector3 direction)
+    virtual public void Move()
     {
-        direction.z = 0;
-        Vector3 pos = transform.localPosition;
-        pos += mMoveSpeed * Time.smoothDeltaTime * direction.normalized * hit;
-        transform.localPosition = pos;
+        mRigidBody.AddForce(50 * mDirection);
     }
 
-    public void Shoot(Vector3 direction)
+    virtual public void Shoot()
     {
-        direction.z = 0;
-        if (Time.time - mShootTime > mShootRate)
-        {
-            mShootTime = Time.time;
-            GameObject e = Instantiate(mBullet);
-            e.transform.position = transform.position;
-            e.transform.right = direction;
-        }
+        Instantiate(mBullet);
+        mBullet.transform.localPosition = transform.localPosition;
+        mBullet.transform.right = mTowards;
     }
 
-    public void GetHurt(int damage)
-    {
-        if (mHealthPoint - damage > 0)
-        {
-            mHealthPoint -= damage;
-        }
-        else
-        {
-            mHealthPoint = 0;
-        }
-    }
 
-    public void Death()
-    {
-        return;
-    }
-
-    public void OnFootTriggerEnter2D(Collider2D collision)
-    {
-        hit = -1;
-    }
-
-    public void OnFootTriggerExit2D(Collider2D collision)
-    {
-        hit = 1;
-    }
 }
