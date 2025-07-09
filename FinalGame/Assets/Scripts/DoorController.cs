@@ -23,6 +23,8 @@ public class DoorController : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private bool isOpen = false;
     private bool isInRange = false;
+
+    public bool IsOpen { get { return isOpen; } }
     
     void Awake()
     {

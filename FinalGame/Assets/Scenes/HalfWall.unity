@@ -13175,6 +13175,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mFocus: {fileID: 1548346558}
 <<<<<<< HEAD
+<<<<<<< HEAD
 --- !u!1001 &1833312571
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13334,6 +13335,8 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+=======
+>>>>>>> 26611c08589d8a2d6ddf8b84d2a53c6ea8bf3dbd
 =======
 >>>>>>> 26611c08589d8a2d6ddf8b84d2a53c6ea8bf3dbd
 --- !u!1 &2028025441
@@ -13497,7 +13500,11 @@ SceneRoots:
   - {fileID: 582969289}
   - {fileID: 1160049156}
 <<<<<<< HEAD
+<<<<<<< HEAD
   - {fileID: 1833312571}
+=======
+  - {fileID: 891514121}
+>>>>>>> 26611c08589d8a2d6ddf8b84d2a53c6ea8bf3dbd
 =======
   - {fileID: 891514121}
 >>>>>>> 26611c08589d8a2d6ddf8b84d2a53c6ea8bf3dbd

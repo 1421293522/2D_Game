@@ -22,27 +22,6 @@ public class LaserBullet2 : BulletBehavior
     // Update is called once per frame
     void Update()
     {
-        switch (mBulletStatus)
-        {
-            case BulletStatus.Flying:
-                if (!Move())
-                {
-                    mBulletStatus = BulletStatus.Destroyed;
-                    mStatusTime = Time.time;
-                }
-                break;
-            case BulletStatus.Crash:
-                if (!Hit())
-                {
-                    Debug.Log("Hit End");
-                    mBulletStatus = BulletStatus.Destroyed;
-                    mStatusTime = Time.time;
-                }
-                break;
-            case BulletStatus.Destroyed:
-                Destroy();
-                break;
-        }
     }
 
     void OnTriggerEnter2D(Collider2D collision)

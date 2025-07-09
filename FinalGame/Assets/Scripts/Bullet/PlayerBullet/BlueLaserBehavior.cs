@@ -13,35 +13,13 @@ public class LaserBullet : BulletBehavior
     // Start is called before the first frame update
     void Start()
     {
-        mAnimator = gameObject.GetComponent<Animator>();
-
-        Debug.Assert(mAnimator != null);
+        mRigidBody = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        switch (mBulletStatus)
-        {
-            case BulletStatus.Flying:
-                if (!Move())
-                {
-                    mBulletStatus = BulletStatus.Destroyed;
-                    mStatusTime = Time.time;
-                }
-                break;
-            case BulletStatus.Crash:
-                if (!Hit())
-                {
-                    Debug.Log("Hit End");
-                    mBulletStatus = BulletStatus.Destroyed;
-                    mStatusTime = Time.time;
-                }
-                break;
-            case BulletStatus.Destroyed:
-                Destroy();
-                break;
-        }
+        Move();
     }
 
     void OnTriggerEnter2D(Collider2D collision)

@@ -5,16 +5,19 @@ using UnityEngine;
 // Bullet Behavior
 // Two status: Flying and Hit
 // Three behavior: Move Forward, Hit something, Destroyed
+[RequireComponent(typeof(Rigidbody2D))]
 public class BulletBehavior : MonoBehaviour
 {
     // Status
+
+    protected Rigidbody2D mRigidBody = null;
     public enum BulletStatus
     {
         Flying, Crash, Destroyed
     };
 
     // information about Bullet should include its speed
-    public float mMoveSpeed = 50f;
+    public float mSpeed = 10f;
     public float mFlyingDuration = 3f;
     public float mHitDuration = 1f;
     protected BulletStatus mBulletStatus = BulletStatus.Flying;
@@ -30,37 +33,28 @@ public class BulletBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        Move();
     }
 
     // Moving forward at a constant speed
-    public bool Move()
+    public void Move()
     {
-        if (Time.time - mStatusTime < mFlyingDuration)
-        {
-            Vector3 pos = transform.localPosition;
-            pos += transform.right * mMoveSpeed * Time.smoothDeltaTime;
-            transform.localPosition = pos;
-            return true;
-        }
-        else return false;
+        mRigidBody.velocity = mSpeed * transform.right;
     }
 
     // Hit something, the wall or humanoid
-    public bool Hit()
+    public void Hit()
     {
-        Debug.Log("Hit");
-        if (Time.time - mStatusTime < mHitDuration)
-        {
-            return true;
-        }
-        else return false;
+        
+        mRigidBody.velocity = Vector3.zero;
+        
     }
 
     // Destroyed it self
     public void Destroy()
     {
+        Debug.Log("Hit");
         Destroy(transform.gameObject);
     }
-    
+
 }
