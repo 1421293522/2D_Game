@@ -11,6 +11,7 @@ public class HumanoidBehavior : MonoBehaviour
     public float mMoveSpeed = 30f;
     public float mShootRate = 0.1f;
     private float mShootTime = 0f;
+    private int hit = 1;
     void Start()
     {
 
@@ -32,7 +33,7 @@ public class HumanoidBehavior : MonoBehaviour
     {
         direction.z = 0;
         Vector3 pos = transform.localPosition;
-        pos += mMoveSpeed * Time.smoothDeltaTime * direction.normalized;
+        pos += mMoveSpeed * Time.smoothDeltaTime * direction.normalized * hit;
         transform.localPosition = pos;
     }
 
@@ -65,4 +66,13 @@ public class HumanoidBehavior : MonoBehaviour
         return;
     }
 
+    public void OnFootTriggerEnter2D(Collider2D collision)
+    {
+        hit = -1;
+    }
+
+    public void OnFootTriggerExit2D(Collider2D collision)
+    {
+        hit = 1;
+    }
 }
