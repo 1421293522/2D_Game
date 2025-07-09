@@ -83,7 +83,17 @@ public class HeroBehavior : HumanoidBehavior
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        GetHurt(10);
+        if (collision.CompareTag("Bullet"))
+        {
+            GetHurt(10);
+        }
+        else if (collision.CompareTag("BloodPackage"))
+        {
+            Debug.Log("+10");
+            BloodPackage bp = collision.GetComponent<BloodPackage>();
+            bp.Delete();
+            GetHurt(-10); // This will heal since it's negative
+        }
     }
     
 
