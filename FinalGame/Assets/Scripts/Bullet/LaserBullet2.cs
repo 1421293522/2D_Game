@@ -10,6 +10,7 @@ public class LaserBullet2 : BulletBehavior
     {
         mStatusTime = Time.time;
         mBulletStatus = BulletStatus.Flying;
+        mDamage = 10;
     }
     // Start is called before the first frame update
     void Start()
