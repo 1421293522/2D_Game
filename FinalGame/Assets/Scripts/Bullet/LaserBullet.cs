@@ -47,7 +47,7 @@ public class LaserBullet : BulletBehavior
     void OnTriggerEnter2D(Collider2D collision)
     {
         GameObject e = collision.gameObject;
-        if (e.name == "Enemy1")
+        if (e.name == "Enemy1" || e.name == "Wall")
         {
             Debug.Log("Trigger");
             if (mBulletStatus != BulletStatus.Crash)

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2514987648141378987}
   - component: {fileID: 527177998066383525}
   - component: {fileID: 4697934971580087090}
+  - component: {fileID: 995226515868997911}
   m_Layer: 0
   m_Name: GreenLaserBullet
   m_TagString: Untagged
@@ -100,7 +101,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mMoveSpeed: 50
   mFlyingDuration: 3
-  mHitDuration: 0
+  mHitDuration: 0.2
 --- !u!61 &4697934971580087090
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -133,7 +134,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.000000029802322, y: -0.014114227}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -144,5 +145,26 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.36, y: 0.1}
+  m_Size: {x: 0.3295688, y: 0.11881866}
   m_EdgeRadius: 0
+--- !u!95 &995226515868997911
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4396420867434883223}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 0664950f8ea8c1541b19ea3d7909737c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
