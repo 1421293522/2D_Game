@@ -10,8 +10,6 @@ public class HeroBehavior : HumanoidBehavior
 {
     
     private float mDashSpeed = 2f;
-    private int mHealth = 100;
-    private const int kMaxHealth = 100;
     void Start()
     {
         mRigidBody = GetComponent<Rigidbody2D>();
@@ -48,32 +46,7 @@ public class HeroBehavior : HumanoidBehavior
         if (Time.time - mShootTimer > mShootRate)
         {
             base.Shoot();
-            
+            mShootTimer = Time.time;
         }
-    }
-
-    void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Bullet"))
-        {
-            int damage = collision.gameObject.GetComponent<BulletBehavior>().getDamage();
-            if (damage > 0)
-            {
-                mHealth -= damage;
-            }
-        }
-        else if (collision.CompareTag("BloodPackage"))
-        {
-            //Debug.Log("+10");
-            BloodPackage bp = collision.GetComponent<BloodPackage>();
-            bp.Delete();
-            if(mHealth+10 > kMaxHealth) { mHealth = kMaxHealth; } 
-            else { mHealth = mHealth + 10; }
-        }
-    }
-
-    public int getHealth()
-    {
-        return mHealth;
     }
 }
