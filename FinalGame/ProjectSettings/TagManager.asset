@@ -4,6 +4,8 @@
 TagManager:
   serializedVersion: 2
   tags:
+  - Bullet
+  - BloodPackage
   - Enemy
   - PlayerBullet
   - EnemyBullet
