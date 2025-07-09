@@ -23,7 +23,6 @@ public class RoomAppear : MonoBehaviour
             SetTilemapsColor(Color.white);
             StartCoroutine(RevealEffect());
         }
-        //Debug.Log("Update Called");
     }
 
     private IEnumerator RevealEffect()
