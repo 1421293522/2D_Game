@@ -6,6 +6,7 @@ using UnityEngine.Tilemaps;
 public class RoomAppear : MonoBehaviour
 {
     public bool isRevealed = false;
+    public DoorController linkedDoor; // 拖入你想要关联的门对象
 
     private Tilemap[] tilemaps;
 
@@ -17,7 +18,7 @@ public class RoomAppear : MonoBehaviour
 
     void Update()
     {
-        if (!isRevealed && Input.GetKeyDown(KeyCode.R))
+        if (!isRevealed && linkedDoor != null && linkedDoor.IsOpen)
         {
             isRevealed = true;
             SetTilemapsColor(Color.white);
