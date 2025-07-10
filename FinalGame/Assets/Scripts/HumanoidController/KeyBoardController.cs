@@ -34,7 +34,20 @@ public class KeyBoardController : HumanoidController
         {
             mBehaviorHandler.Idle();
         }
-
+        if (Input.GetKey(KeyCode.Space))
+        {
+            mBehaviorHandler.Dash();
+        }
+        /*
+        if (towardsRight && mBehaviorHandler.mFirePoint.x < 0)
+        {
+            mBehaviorHandler.mFirePoint.x *= -1;
+        }
+        else if (!towardsRight && mBehaviorHandler.mFirePoint.x > 0)
+        {
+            mBehaviorHandler.mFirePoint.x *= -1;
+        }
+        */
         if (Input.GetMouseButton(0))
         {
             mBehaviorHandler.Shoot();

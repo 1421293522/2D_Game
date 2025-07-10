@@ -17,12 +17,12 @@ public class Enemy2Behavior : HumanoidBehavior
 
     }
 
-    public void Sleep()
+    public override void Sleep()
     {
         
     }
 
-    public void Activate()
+    public override void Activate()
     {
         mAnimator.SetTrigger("Activate");
     }
