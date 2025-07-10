@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HeroStatus : HumanoidStatus
+public class Enemy3Collide : HumanoidCollide
 {
     // Start is called before the first frame update
     void Start()
     {
-        Init();
+
     }
 
     // Update is called once per frame
@@ -16,9 +16,8 @@ public class HeroStatus : HumanoidStatus
 
     }
 
-    public override void Die()
+    void OnCollisionEnter2D(Collision2D collision)
     {
-        mAnimator.SetTrigger("Die");
-        base.Die();
+        
     }
 }
