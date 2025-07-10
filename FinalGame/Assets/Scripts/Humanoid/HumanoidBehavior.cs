@@ -60,9 +60,10 @@ public class HumanoidBehavior : MonoBehaviour
 
     virtual public void Shoot()
     {
-        Instantiate(mBullet);
-        mBullet.transform.localPosition = transform.localPosition;
-        mBullet.transform.right = mTowards;
+        GameObject e = Instantiate(mBullet);
+        e.transform.localPosition = transform.localPosition;
+        float angle = Mathf.Atan2(mTowards.y, mTowards.x) * Mathf.Rad2Deg;
+        e.transform.rotation = Quaternion.Euler(0, 0, angle);
     }
 
 
