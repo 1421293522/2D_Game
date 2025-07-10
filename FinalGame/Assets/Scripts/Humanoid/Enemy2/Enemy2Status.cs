@@ -24,7 +24,7 @@ public class Enemy2Status : HumanoidStatus
 
     public override void Die()
     {
-        base.Die();
         mAnimator.SetTrigger("Die");
+        base.Die();
     }
 }

@@ -12,6 +12,8 @@ public class HumanoidStatus : MonoBehaviour
     {
         get { return mHP; }
     }
+    protected bool mIsDying = false;
+    protected float mStatusTimer = 0f;
 
 
     protected void Init()
@@ -24,6 +26,7 @@ public class HumanoidStatus : MonoBehaviour
         if (mHealthPoint - damage <= 0)
         {
             mHP = 0;
+            mIsDying = true;
         }
         else
         {
