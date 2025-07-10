@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1815768632148791037}
   - component: {fileID: 5786395461310800325}
   - component: {fileID: 4602544001529353474}
+  - component: {fileID: 2018464581373022422}
   m_Layer: 5
   m_Name: Crosshair
   m_TagString: Untagged
@@ -48,7 +49,7 @@ Canvas:
   m_GameObject: {fileID: 5988923822072475318}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
+  m_RenderMode: 1
   m_Camera: {fileID: 0}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
@@ -102,6 +103,22 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &2018464581373022422
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5988923822072475318}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd9a8a247c9caee4199e0dc3a8ec48e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  crosshairRect: {fileID: 8991034244292113309}
+  parentCanvas: {fileID: 1815768632148791037}
+  offsetX: 0
+  offsetY: 0
 --- !u!1 &7635116743449502731
 GameObject:
   m_ObjectHideFlags: 0
@@ -162,7 +179,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
