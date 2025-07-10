@@ -6,22 +6,28 @@ using UnityEngine;
 public class HumanoidStatus : MonoBehaviour
 {
     protected Animator mAnimator = null;
-    public int mHealthPoint = 100;
+    public int mMaxHealthPoint = 100;
+    private int mHP = 100;
+    public int mHealthPoint
+    {
+        get { return mHP; }
+    }
 
 
     protected void Init()
     {
         mAnimator = GetComponent<Animator>();
+        mHP = mMaxHealthPoint;
     }
     virtual public void GetHurt(int damage)
     {
         if (mHealthPoint - damage <= 0)
         {
-            mHealthPoint = 0;
+            mHP = 0;
         }
         else
         {
-            mHealthPoint -= damage;
+            mHP -= damage;
         }
         Die();
     }
@@ -33,5 +39,16 @@ public class HumanoidStatus : MonoBehaviour
             Destroy(transform.gameObject);
         }
     }
-    
+
+    virtual public void Recover(int health)
+    {
+        if (mHealthPoint + health <= mMaxHealthPoint)
+        {
+            mHP += health;
+        }
+        else
+        {
+            mHP = 100;
+        }
+    }
 }

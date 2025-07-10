@@ -14,6 +14,7 @@ public class HeroBehavior : HumanoidBehavior
     void Start()
     {
         Init();
+        mFirePoint = new Vector3(8, 8, 0);
     }
     void Update()
     {
@@ -21,11 +22,11 @@ public class HeroBehavior : HumanoidBehavior
         
     }
 
-    void Dash()
+    public override void Dash()
     {
         if (canDash)
         {
-            mRigidBody.AddForce(10 * mDirection, ForceMode2D.Impulse);
+            base.Dash();
         }
     }
 

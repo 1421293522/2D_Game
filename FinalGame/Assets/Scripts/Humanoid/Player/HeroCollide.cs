@@ -29,9 +29,9 @@ public class HeroCollide : MonoBehaviour
             LegPackBehaviourScript Leg = collision.gameObject.GetComponent<LegPackBehaviourScript> ();
             if ( Leg != null ) { Leg.Delete(); }
         }
-        else if(e.tag == "BloodPackage")
+        else if (e.tag == "BloodPackage")
         {
-            GetComponent<HumanoidStatus>().GetHurt(-10);
+            GetComponent<HumanoidStatus>().Recover(10);
             BloodPackage bp = collision.gameObject.GetComponent<BloodPackage>();
             bp.Delete();
         }
