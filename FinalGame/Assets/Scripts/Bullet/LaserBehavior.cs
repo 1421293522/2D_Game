@@ -66,11 +66,6 @@ public class LaserBehavior : ProjectileBehavior
     {
         GameObject e = collision.gameObject;
         
-        Debug.Log("Trigger!");
-        Debug.Log(Hero);
-        Debug.Log(Enemy);
-        Debug.Log(Hero && e.CompareTag("Player"));
-        Debug.Log(Enemy && e.CompareTag("Enemy"));
         if ((Hero && e.CompareTag("Player")) ||(Enemy && e.CompareTag("Enemy")))
         {
             if (mStatus == ProjectileStatus.Flying)
