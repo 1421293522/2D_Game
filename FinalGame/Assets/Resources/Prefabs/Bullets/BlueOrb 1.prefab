@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 970910286694728440}
   - component: {fileID: 4086346260997041372}
   m_Layer: 30
-  m_Name: BlueOrb
+  m_Name: BlueOrb 1
   m_TagString: PlayerBullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

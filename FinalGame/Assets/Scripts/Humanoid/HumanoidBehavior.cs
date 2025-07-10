@@ -38,7 +38,7 @@ public class HumanoidBehavior : MonoBehaviour
 
     void Update()
     {
-
+        
     }
 
     virtual protected void Init()

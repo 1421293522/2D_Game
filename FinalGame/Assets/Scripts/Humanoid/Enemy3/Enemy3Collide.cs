@@ -15,9 +15,4 @@ public class Enemy3Collide : HumanoidCollide
     {
 
     }
-
-    void OnCollisionEnter2D(Collision2D collision)
-    {
-        
-    }
 }

@@ -23,9 +23,11 @@ public class HeroCollide : MonoBehaviour
         {
             GetComponent<HumanoidStatus>().GetHurt(10);
         }
-        else if (e.tag == "Wall")
+        else if (e.tag == "LegPack")
         {
-            Debug.Log("Ouch!!!");
+            GetComponent<HeroBehavior>().canDash = true;
+            LegPackBehaviourScript Leg = collision.gameObject.GetComponent<LegPackBehaviourScript> ();
+            if ( Leg != null ) { Leg.Delete(); }
         }
         else if(e.tag == "BloodPackage")
         {
