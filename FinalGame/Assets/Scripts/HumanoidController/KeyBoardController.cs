@@ -2,11 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class KeyBoardController : MonoBehaviour
+public class KeyBoardController : HumanoidController
 {
-    private HumanoidBehavior mBehaviorHandler = null;
-    private float mStatusTimer = 0f;
     // Start is called before the first frame update
+    private bool towardsRight = true;
     void Start()
     {
         mBehaviorHandler = GetComponent<HumanoidBehavior>();
@@ -23,11 +22,13 @@ public class KeyBoardController : MonoBehaviour
         Vector3 mousepos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
         mBehaviorHandler.mMoveDirection = direction;
-        mBehaviorHandler.mFacingDirection = mousepos - transform.localPosition;
+        Vector3 facing = mBehaviorHandler.mFacingDirection = mousepos - transform.localPosition;
 
         if (direction != Vector3.zero)
         {
             mBehaviorHandler.Move();
+            if (direction.x > 0) towardsRight = true;
+            if (direction.x < 0) towardsRight = false;
         }
         else
         {
@@ -37,6 +38,11 @@ public class KeyBoardController : MonoBehaviour
         if (Input.GetMouseButton(0))
         {
             mBehaviorHandler.Shoot();
+            if (facing.x > 0) towardsRight = true;
+            if (facing.x < 0) towardsRight = false;
+
         }
+
+        GetComponent<SpriteRenderer>().flipX = !towardsRight;
     }
 }
