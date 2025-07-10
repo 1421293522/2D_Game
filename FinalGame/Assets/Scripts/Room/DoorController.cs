@@ -14,9 +14,11 @@ public class DoorController : MonoBehaviour
     [Tooltip("Opening state 2")]
     public Sprite openingState2;    
     [Tooltip("Fully open state")]
-    public Sprite openState;        
-    
+    public Sprite openState;
+
     [Header("Animation Settings")]
+    
+    private Collider2D doorCollider;
     public float activationDelay = 0.5f;
     public float openingInterval = 0.3f;
     
@@ -29,6 +31,7 @@ public class DoorController : MonoBehaviour
     void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
+        doorCollider = GetComponent<Collider2D>();
         ResetDoor();
     }
     
@@ -62,6 +65,7 @@ public class DoorController : MonoBehaviour
         
         // 完全打开状态
         spriteRenderer.sprite = openState;
+        doorCollider.enabled = false; // 禁用碰撞体
         isOpen = true;
     }
     
