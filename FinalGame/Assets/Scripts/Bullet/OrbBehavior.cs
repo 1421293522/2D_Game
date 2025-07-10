@@ -68,7 +68,6 @@ public class OrbBehavior : ProjectileBehavior
 
         if (e.layer == 31 && ((Hero && e.CompareTag("Player")) || (Enemy && e.CompareTag("Enemy"))))
         {
-            Debug.Log("Entity");
             if (mStatus == ProjectileStatus.Flying)
             {
                 mStatusTimer = Time.time;
@@ -78,7 +77,6 @@ public class OrbBehavior : ProjectileBehavior
         }
         else if (e.layer != 31)
         {
-            Debug.Log("Others");
             if (mStatus == ProjectileStatus.Flying)
             {
                 mStatusTimer = Time.time;

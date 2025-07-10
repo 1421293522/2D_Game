@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7240637822315784248}
   - component: {fileID: 2486828514410679277}
   - component: {fileID: 1283491809683634473}
-  m_Layer: 0
+  m_Layer: 28
   m_Name: BloodPackage
   m_TagString: BloodPackage
   m_Icon: {fileID: 0}
@@ -166,7 +166,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6245619288005764196}
   - component: {fileID: 48691138201435680}
-  m_Layer: 0
+  m_Layer: 28
   m_Name: Light 2D
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -204,8 +204,8 @@ MonoBehaviour:
   m_LightType: 1
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 1
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 1.5
+  m_Color: {r: 0.29411766, g: 0.6392157, b: 0.9607843, a: 1}
+  m_Intensity: 1
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
   m_ApplyToSortingLayers: 00000000

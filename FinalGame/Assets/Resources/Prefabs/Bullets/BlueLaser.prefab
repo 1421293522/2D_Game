@@ -33,8 +33,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: -1}
   m_LocalScale: {x: 20, y: 20, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 8942538420730525119}
+  m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: -4.585, y: 32.085, z: 15.853}
 --- !u!212 &2237918859216792318
@@ -122,7 +121,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fce75ed5e2fd56a4c848778601373596, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mSpeed: 10
+  mSpeed: 100
+  mDamage: 10
   Hero: 0
   Enemy: 1
 --- !u!61 &-3828776108768699061

@@ -7,12 +7,16 @@ public class HumanoidStatus : MonoBehaviour
 {
     protected Animator mAnimator = null;
     public int mMaxHealthPoint = 100;
-    private int mHP = 100;
+    protected int mHP = 100;
     public int mHealthPoint
     {
         get { return mHP; }
     }
     protected bool mIsDying = false;
+    public bool mIsDead
+    {
+        get { return mIsDying; }
+    }
     protected float mStatusTimer = 0f;
 
 
@@ -26,13 +30,11 @@ public class HumanoidStatus : MonoBehaviour
         if (mHealthPoint - damage <= 0)
         {
             mHP = 0;
-            mIsDying = true;
         }
         else
         {
             mHP -= damage;
         }
-        Die();
     }
 
     virtual public void Die()

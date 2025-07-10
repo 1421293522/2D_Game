@@ -7,41 +7,41 @@ public class HeroStatus : HumanoidStatus
     // Start is called before the first frame update
     void Start()
     {
-        Init();
+        mAnimator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (mIsDying)
+        {
+            if (Time.time - mStatusTimer > 1.15f)
+            {
+                Die();
+            }
+            else
+            {
+            }
+        }
 
+    }
+
+    public override void GetHurt(int damage)
+    {
+        if (mHealthPoint > 0) { base.GetHurt(damage); }
+        else
+        {
+            if (!mIsDying)
+            {
+                mIsDying = true;
+                mStatusTimer = Time.time;
+                mAnimator.SetTrigger("Die");
+            }
+        }
     }
 
     public override void Die()
     {
-        mAnimator.SetTrigger("Die");
-        StartCoroutine(WaitForAnimationThenDie());
-    }
-
-    private IEnumerator WaitForAnimationThenDie()
-    {
-        // 等待动画播放完成
-        yield return new WaitForSeconds(GetAnimationLength("Die"));
-
-        // 动画播放完成后调用基类的Die方法
         base.Die();
-    }
-
-    private float GetAnimationLength(string animationName)
-    {
-        // 获取动画剪辑的长度
-        AnimationClip[] clips = mAnimator.runtimeAnimatorController.animationClips;
-        foreach (AnimationClip clip in clips)
-        {
-            if (clip.name == animationName)
-            {
-                return clip.length;
-            }
-        }
-        return 0f; // 如果没有找到动画，返回0
     }
 }

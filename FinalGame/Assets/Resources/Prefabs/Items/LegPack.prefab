@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8089222740492625888}
   - component: {fileID: 4683200125938906382}
-  m_Layer: 0
+  m_Layer: 28
   m_Name: Light 2D
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -106,7 +106,7 @@ GameObject:
   - component: {fileID: 4058196055728954114}
   - component: {fileID: 9215647201667361038}
   - component: {fileID: 1301489666525760828}
-  m_Layer: 0
+  m_Layer: 28
   m_Name: LegPack
   m_TagString: LegPack
   m_Icon: {fileID: 0}

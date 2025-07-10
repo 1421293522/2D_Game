@@ -11,6 +11,7 @@ TagManager:
   - EnemyBullet
   - Bullet
   - Wall
+  - LegPack
   layers:
   - Default
   - TransparentFX
@@ -40,8 +41,8 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
+  - Item
+  - Sight
   - Projectile
   - Humanoid
   m_SortingLayers:

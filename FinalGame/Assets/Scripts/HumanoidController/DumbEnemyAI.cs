@@ -20,7 +20,6 @@ public class DumbEnemyAI : HumanoidController
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(mStatus);
         Vector3 relaPos = mSightHandler.mTargetPosition - transform.localPosition;
 
         mBehaviorHandler.mFacingDirection = mBehaviorHandler.mMoveDirection = relaPos;

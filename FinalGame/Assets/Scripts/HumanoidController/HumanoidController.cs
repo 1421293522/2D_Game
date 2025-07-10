@@ -5,6 +5,7 @@ using UnityEngine;
 public class HumanoidController : MonoBehaviour
 {
     protected HumanoidBehavior mBehaviorHandler = null;
+    protected HumanoidStatus mStatusHandler = null;
     protected Sight mSightHandler = null;
     protected float mStatusTimer = 0f;
     // Start is called before the first frame update

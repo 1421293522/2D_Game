@@ -37,7 +37,6 @@ public class Enemy2Behavior : HumanoidBehavior
     public override void Move()
     {
         base.Move();
-        Debug.Log("Set Speed 1");
         mAnimator.SetFloat("Speed", 1f);
     }
 

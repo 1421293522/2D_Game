@@ -9,11 +9,13 @@ public class KeyBoardController : HumanoidController
     void Start()
     {
         mBehaviorHandler = GetComponent<HumanoidBehavior>();
+        mStatusHandler = GetComponent<HumanoidStatus>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (mStatusHandler.mIsDead) return;
         Vector3 direction = Vector3.zero;
         if (Input.GetKey(KeyCode.W)) direction.y += 1f;
         if (Input.GetKey(KeyCode.S)) direction.y -= 1f;
