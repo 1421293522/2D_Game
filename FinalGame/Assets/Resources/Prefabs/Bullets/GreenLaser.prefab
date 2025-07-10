@@ -13,9 +13,8 @@ GameObject:
   - component: {fileID: 527177998066383525}
   - component: {fileID: 4697934971580087090}
   - component: {fileID: 995226515868997911}
-  - component: {fileID: 8071203651105482792}
   m_Layer: 0
-  m_Name: GreenLaserBullet
+  m_Name: GreenLaser
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29,9 +28,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4396420867434883223}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0.2087309, z: 0.11298499, w: 0.97142464}
-  m_LocalPosition: {x: -12.548693, y: -15.098494, z: 0.020586718}
-  m_LocalScale: {x: 10, y: 10, z: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -1}
+  m_LocalScale: {x: 20, y: 20, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -97,12 +96,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 4396420867434883223}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c5dd376759ddb924e80675c3c9dd773b, type: 3}
+  m_Script: {fileID: 11500000, guid: fce75ed5e2fd56a4c848778601373596, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mSpeed: 10
-  mFlyingDuration: 3
-  mHitDuration: 0.2
+  mSpeed: 20
+  Hero: 1
+  Enemy: 0
 --- !u!61 &4697934971580087090
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -169,30 +168,3 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!50 &8071203651105482792
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4396420867434883223}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
