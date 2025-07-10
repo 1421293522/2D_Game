@@ -13,18 +13,28 @@ public class Enemy1Status : HumanoidStatus
     // Update is called once per frame
     void Update()
     {
-
+        if (mIsDying && (Time.time - mStatusTimer) > 0.2f)
+        {
+            Die();
+        }
     }
 
     public override void GetHurt(int damage)
     {
         base.GetHurt(damage);
-        mAnimator.SetTrigger("GetHurt");
+        if (mIsDying)
+        {
+            mAnimator.SetTrigger("Die");
+            
+        }
+        else
+        {
+            mAnimator.SetTrigger("GetHurt");
+        }
     }
 
     public override void Die()
     {
-        mAnimator.SetTrigger("Die");
         base.Die();
     }
 }
