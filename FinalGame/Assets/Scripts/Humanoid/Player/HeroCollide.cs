@@ -23,13 +23,9 @@ public class HeroCollide : MonoBehaviour
         {
             GetComponent<HumanoidStatus>().GetHurt(10);
         }
-        else if (e.tag == "Wall")
+        else if (e.tag == "BloodPackage")
         {
-            Debug.Log("Ouch!!!");
-        }
-        else if(e.tag == "BloodPackage")
-        {
-            GetComponent<HumanoidStatus>().GetHurt(-10);
+            GetComponent<HumanoidStatus>().Recover(10);
             BloodPackage bp = collision.gameObject.GetComponent<BloodPackage>();
             bp.Delete();
         }

@@ -67,9 +67,5 @@ public class ProjectileBehavior : MonoBehaviour
     public bool Hero = false;
     public bool Enemy = false;
 
-    void OnTriggerEnter2D(Collider2D collision)
-    {
-        
-    }
 
 }

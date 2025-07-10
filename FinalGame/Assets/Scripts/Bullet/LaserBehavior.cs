@@ -66,8 +66,20 @@ public class LaserBehavior : ProjectileBehavior
     {
         GameObject e = collision.gameObject;
         
-        if ((Hero && e.CompareTag("Player")) ||(Enemy && e.CompareTag("Enemy")))
+        if (e.layer == 31 && ((Hero && e.CompareTag("Player")) || (Enemy && e.CompareTag("Enemy"))))
         {
+            Debug.Log("Entity");
+            if (mStatus == ProjectileStatus.Flying)
+            {
+                mStatusTimer = Time.time;
+                mStatus = ProjectileStatus.Crash;
+                mAnimator.SetTrigger("Destroy");
+                e.GetComponent<HumanoidStatus>().GetHurt(mDamage);
+            }
+        }
+        else if (e.layer != 31)
+        {
+            Debug.Log("Others");
             if (mStatus == ProjectileStatus.Flying)
             {
                 mStatusTimer = Time.time;
