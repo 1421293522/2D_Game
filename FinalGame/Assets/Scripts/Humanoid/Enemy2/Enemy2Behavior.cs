@@ -17,12 +17,12 @@ public class Enemy2Behavior : HumanoidBehavior
 
     }
 
-    public void Sleep()
+    public override void Sleep()
     {
         
     }
 
-    public void Activate()
+    public override void Activate()
     {
         mAnimator.SetTrigger("Activate");
     }
@@ -37,7 +37,6 @@ public class Enemy2Behavior : HumanoidBehavior
     public override void Move()
     {
         base.Move();
-        Debug.Log("Set Speed 1");
         mAnimator.SetFloat("Speed", 1f);
     }
 

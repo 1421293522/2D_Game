@@ -8,6 +8,7 @@ public class LaserBehavior : ProjectileBehavior
     {
         mStatusTimer = Time.time;
         mStatus = ProjectileStatus.Flying;
+        mDamage = 10;
     }
     // Start is called before the first frame update
     void Start()
@@ -66,12 +67,20 @@ public class LaserBehavior : ProjectileBehavior
     {
         GameObject e = collision.gameObject;
         
-        Debug.Log("Trigger!");
-        Debug.Log(Hero);
-        Debug.Log(Enemy);
-        Debug.Log(Hero && e.CompareTag("Player"));
-        Debug.Log(Enemy && e.CompareTag("Enemy"));
-        if ((Hero && e.CompareTag("Player")) ||(Enemy && e.CompareTag("Enemy")))
+        if (e.layer == 31 && ((Hero && e.CompareTag("Player")) || (Enemy && e.CompareTag("Enemy"))))
+        {
+            if (mStatus == ProjectileStatus.Flying)
+            {
+                mStatusTimer = Time.time;
+                mStatus = ProjectileStatus.Crash;
+                mAnimator.SetTrigger("Destroy");
+                if(e.GetComponent<HumanoidStatus>().mHealthPoint > 0)
+                {
+                    e.GetComponent<HumanoidStatus>().GetHurt(mDamage);
+                }
+            }
+        }
+        else if (e.layer != 31)
         {
             if (mStatus == ProjectileStatus.Flying)
             {

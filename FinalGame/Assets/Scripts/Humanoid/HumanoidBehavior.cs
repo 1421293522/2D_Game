@@ -1,4 +1,5 @@
 using System;
+using JetBrains.Annotations;
 using UnityEngine;
 
 [RequireComponent(typeof(Collider2D))]
@@ -10,6 +11,7 @@ public class HumanoidBehavior : MonoBehaviour
 {
     protected Rigidbody2D mRigidBody = null;
     protected Animator mAnimator = null;
+    public Vector3  mFirePoint;
 
     // used by Move, include speed & direction
     public float mSpeed;
@@ -46,8 +48,15 @@ public class HumanoidBehavior : MonoBehaviour
         mRigidBody = GetComponent<Rigidbody2D>();
         mAnimator = GetComponent<Animator>();
         mRigidBody.freezeRotation = true;
+
+        mRigidBody.mass = 1;
+        mRigidBody.drag = 10;
+        
+
+
+
     }
-    
+
     virtual public void Idle()
     {
 
@@ -55,16 +64,32 @@ public class HumanoidBehavior : MonoBehaviour
 
     virtual public void Move()
     {
-        mRigidBody.AddForce(50 * mDirection);
+        float force = mSpeed * mRigidBody.drag;
+        mRigidBody.AddForce(force * mDirection);
     }
 
     virtual public void Shoot()
     {
         GameObject e = Instantiate(mBullet);
-        e.transform.localPosition = transform.localPosition;
+
+        e.transform.localPosition = gameObject.transform.localPosition + mFirePoint;
         float angle = Mathf.Atan2(mTowards.y, mTowards.x) * Mathf.Rad2Deg;
         e.transform.rotation = Quaternion.Euler(0, 0, angle);
     }
 
+    virtual public void Dash()
+    {
+        mRigidBody.AddForce(mSpeed * mDirection, ForceMode2D.Impulse);
+    }
+
+    virtual public void Sleep()
+    {
+
+    }
+
+    virtual public void Activate()
+    {
+        
+    }
 
 }

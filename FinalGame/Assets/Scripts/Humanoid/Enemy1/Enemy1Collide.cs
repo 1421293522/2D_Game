@@ -4,20 +4,16 @@ using UnityEngine;
 
 public class Enemy1Collide : HumanoidCollide
 {
+    Animator mAnimator;
     // Start is called before the first frame update
     void Start()
     {
-
+        mAnimator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
 
-    }
-
-    void OnCollisionEnter2D(Collision2D collision)
-    {
-        
     }
 }

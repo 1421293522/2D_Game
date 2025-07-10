@@ -2,19 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class KeyBoardController : MonoBehaviour
+public class KeyBoardController : HumanoidController
 {
-    private HumanoidBehavior mBehaviorHandler = null;
-    private float mStatusTimer = 0f;
     // Start is called before the first frame update
+    private bool towardsRight = true;
     void Start()
     {
         mBehaviorHandler = GetComponent<HumanoidBehavior>();
+        mStatusHandler = GetComponent<HumanoidStatus>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (mStatusHandler.mIsDead) return;
         Vector3 direction = Vector3.zero;
         if (Input.GetKey(KeyCode.W)) direction.y += 1f;
         if (Input.GetKey(KeyCode.S)) direction.y -= 1f;
@@ -23,20 +24,40 @@ public class KeyBoardController : MonoBehaviour
         Vector3 mousepos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
         mBehaviorHandler.mMoveDirection = direction;
-        mBehaviorHandler.mFacingDirection = mousepos - transform.localPosition;
+        Vector3 facing = mBehaviorHandler.mFacingDirection = mousepos - transform.localPosition;
 
         if (direction != Vector3.zero)
         {
             mBehaviorHandler.Move();
+            if (direction.x > 0) towardsRight = true;
+            if (direction.x < 0) towardsRight = false;
         }
         else
         {
             mBehaviorHandler.Idle();
         }
-
+        if (Input.GetKey(KeyCode.Space))
+        {
+            mBehaviorHandler.Dash();
+        }
+        /*
+        if (towardsRight && mBehaviorHandler.mFirePoint.x < 0)
+        {
+            mBehaviorHandler.mFirePoint.x *= -1;
+        }
+        else if (!towardsRight && mBehaviorHandler.mFirePoint.x > 0)
+        {
+            mBehaviorHandler.mFirePoint.x *= -1;
+        }
+        */
         if (Input.GetMouseButton(0))
         {
             mBehaviorHandler.Shoot();
+            if (facing.x > 0) towardsRight = true;
+            if (facing.x < 0) towardsRight = false;
+
         }
+
+        GetComponent<SpriteRenderer>().flipX = !towardsRight;
     }
 }

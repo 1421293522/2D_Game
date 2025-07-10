@@ -20,14 +20,12 @@ public class Enemy3Behavior : HumanoidBehavior
     public override void Idle()
     {
         base.Idle();
-        Debug.Log("Set Speed 0");
         mAnimator.SetFloat("Speed", 0f);
     }
 
     public override void Move()
     {
         base.Move();
-        Debug.Log("Set Speed 1");
         mAnimator.SetFloat("Speed", 1f);
     }
 
@@ -37,7 +35,6 @@ public class Enemy3Behavior : HumanoidBehavior
         {
             mShootTimer = Time.time;
             base.Shoot();
-            Debug.Log("Trigger IsShooting");
             mAnimator.SetTrigger("Shoot");
         }
         

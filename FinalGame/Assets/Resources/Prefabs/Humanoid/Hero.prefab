@@ -199,9 +199,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56cdb4f6aca0aa240919e40d60d14f99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mSpeed: 10
+  mFirePoint: {x: 0, y: 8, z: 0}
+  mSpeed: 20
   mBullet: {fileID: 308919726504299372, guid: 1723fb17d097c9b43b9b863cd5f48d1d, type: 3}
   mShootRate: 0.1
+  canDash: 0
 --- !u!114 &2360309436929258849
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -226,7 +228,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f626138300f7e14c8632a74975ac9a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mHealthPoint: 100
+  mMaxHealthPoint: 100
 --- !u!114 &5966636799122798347
 MonoBehaviour:
   m_ObjectHideFlags: 0

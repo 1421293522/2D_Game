@@ -21,7 +21,7 @@ public class ProjectileBehavior : MonoBehaviour
     protected float mHitDuration = 0.2f;
     protected ProjectileStatus mStatus = ProjectileStatus.Flying;
     protected float mStatusTimer = 0f;
-    protected int mDamage = 0;
+    public int mDamage = 0;
 
 
     // Start is called before the first frame update
@@ -67,9 +67,5 @@ public class ProjectileBehavior : MonoBehaviour
     public bool Hero = false;
     public bool Enemy = false;
 
-    void OnTriggerEnter2D(Collider2D collision)
-    {
-        
-    }
 
 }

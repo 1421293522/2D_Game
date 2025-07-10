@@ -24,7 +24,6 @@ public class DoorController : MonoBehaviour
     
     private SpriteRenderer spriteRenderer;
     private bool isOpen = false;
-    private bool isInRange = false;
 
     public bool IsOpen { get { return isOpen; } }
     
@@ -43,7 +42,8 @@ public class DoorController : MonoBehaviour
     
     void Update()
     {
-        if(isInRange && Input.GetKeyDown(KeyCode.U) && !isOpen)
+        bool inRange = GetComponentInChildren<Detect>().InRange;
+        if(inRange && Input.GetKeyDown(KeyCode.U) && !isOpen)
         {
             StartCoroutine(OpenDoorSequence());
         }
@@ -69,19 +69,4 @@ public class DoorController : MonoBehaviour
         isOpen = true;
     }
     
-    void OnTriggerEnter2D(Collider2D other)
-    {
-        if(other.CompareTag("Player"))
-        {
-            isInRange = true;
-        }
-    }
-    
-    void OnTriggerExit2D(Collider2D other)
-    {
-        if(other.CompareTag("Player"))
-        {
-            isInRange = false;
-        }
-    }
 }
