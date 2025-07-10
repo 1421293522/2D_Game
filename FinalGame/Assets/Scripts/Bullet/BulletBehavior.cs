@@ -22,6 +22,7 @@ public class BulletBehavior : MonoBehaviour
     public float mHitDuration = 1f;
     protected BulletStatus mBulletStatus = BulletStatus.Flying;
     protected float mStatusTime = 0f;
+    protected int mDamage = 0;
 
 
     // Start is called before the first frame update
@@ -48,6 +49,11 @@ public class BulletBehavior : MonoBehaviour
         
         mRigidBody.velocity = Vector3.zero;
         
+    }
+
+    public int getDamage()
+    {
+        return mDamage;
     }
 
     // Destroyed it self

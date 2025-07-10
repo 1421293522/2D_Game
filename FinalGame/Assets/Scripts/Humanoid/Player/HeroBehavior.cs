@@ -42,12 +42,7 @@ public class HeroBehavior : HumanoidBehavior
         if (Time.time - mShootTimer > mShootRate)
         {
             base.Shoot();
-
+            mShootTimer = Time.time;
         }
-    }
-
-    void OnTriggerEnter2D(Collider2D collision)
-    {
-        
     }
 }
