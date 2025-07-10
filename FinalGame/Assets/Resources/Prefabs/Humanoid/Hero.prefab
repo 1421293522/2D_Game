@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 2360309436929258849}
   - component: {fileID: 7756496463066558815}
   - component: {fileID: 5966636799122798347}
-  m_Layer: 0
+  m_Layer: 31
   m_Name: Hero
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -145,7 +145,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.48}
+  m_Offset: {x: 0.0017217696, y: 0.25272784}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0}
@@ -156,7 +156,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.96, y: 0.96}
+  m_Size: {x: 0.39870667, y: 0.5054557}
   m_EdgeRadius: 0
 --- !u!50 &546408007556833171
 Rigidbody2D:
@@ -171,7 +171,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 3
+  m_LinearDrag: 5
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -184,7 +184,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &5416022924507440818
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -197,8 +197,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56cdb4f6aca0aa240919e40d60d14f99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mSpeed: 0
-  mBullet: {fileID: 0}
+  mSpeed: 10
+  mBullet: {fileID: 308919726504299372, guid: 1723fb17d097c9b43b9b863cd5f48d1d, type: 3}
   mShootRate: 0.1
 --- !u!114 &2360309436929258849
 MonoBehaviour:

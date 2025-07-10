@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy1Behavior : HumanoidBehavior
+public class Enemy3Behavior : HumanoidBehavior
 {
     // Start is called before the first frame update
     void Start()

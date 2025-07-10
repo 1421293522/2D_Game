@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy1Status : HumanoidStatus
+public class Enemy2Status : HumanoidStatus
 {
     // Start is called before the first frame update
     void Start()
@@ -24,7 +24,7 @@ public class Enemy1Status : HumanoidStatus
 
     public override void Die()
     {
-        mAnimator.SetTrigger("Die");
         base.Die();
+        mAnimator.SetTrigger("Die");
     }
 }
